@@ -21,12 +21,16 @@
 package speechd.ssip;
 
 /**
- * Enum holding possible values for SSIP punctuation mode. See section 4.5 of SSIP documentation for further explanation
+ * Enum holding possible values for SSIP punctuation mode. See section 4.5 of
+ * SSIP documentation for further explanation
  * 
  * @author ragb
  * 
  * @see SSIPClient#setPunctuation(SSIPPunctuation)
  */
-public enum SSIPPunctuation {
-  ALL, SOME, NONE;
+public enum SSIPPunctuation
+{
+ ALL,
+ SOME,
+ NONE;
 }

@@ -34,28 +34,35 @@ import junit.framework.TestCase;
  * @author ragb
  * 
  */
-public class SSIPClientTest extends TestCase {
+public class SSIPClientTest extends
+                            TestCase
+{
   SSIPClient _client;
 
   /**
    * @param arg0
    */
-  public SSIPClientTest (String arg0) {
+  public SSIPClientTest(String arg0)
+  {
     super(arg0);
   }
 
   /**
    * @see junit.framework.TestCase#setUp()
    */
-  protected void setUp () throws Exception {
+  protected void setUp() throws Exception
+  {
     super.setUp();
-    _client = new SSIPClient("junit", null, null);
+    _client = new SSIPClient("junit",
+                             null,
+                             null);
   }
 
   /**
    * @see junit.framework.TestCase#tearDown()
    */
-  protected void tearDown () throws Exception {
+  protected void tearDown() throws Exception
+  {
     super.tearDown();
     _client.close();
   }
@@ -63,47 +70,61 @@ public class SSIPClientTest extends TestCase {
   /**
    * 
    */
-  public void testSay () {
-    try {
+  public void testSay()
+  {
+    try
+    {
       _client.say(SSIPPriority.TEXT,
-          "this is the client say method test. this one should not be spoken");
+                  "this is the client say method test. this one should not be spoken");
       _client.say(SSIPPriority.IMPORTANT, "this is important");
       _client.say(SSIPPriority.MESSAGE, "this is a message");
       _client.say(SSIPPriority.TEXT, "a litle text to say...");
-    } catch (SSIPException e) {
+    }
+    catch (SSIPException e)
+    {
       fail();
     }
   }
 
-  public void testSayFormated () {
-    try {
-      _client.sayFormated(SSIPPriority.TEXT, "this thing is testing with %s",
-          "junit");
-    } catch (SSIPException e) {
+  public void testSayFormated()
+  {
+    try
+    {
+      _client.sayFormated(SSIPPriority.TEXT, "this thing is testing with %s", "junit");
+    }
+    catch (SSIPException e)
+    {
       fail("say formated");
     }
   }
 
-  public void testGetClientId () {
+  public void testGetClientId()
+  {
     int id = _client.getClientId();
     assertTrue(id > 0);
   }
 
-  public void testStop () {
-    try {
+  public void testStop()
+  {
+    try
+    {
       _client.stop();
       _client.setTarget(SSIPClient.Target.ALL);
       _client.stop();
       _client.setTarget(_client.getClientId());
       _client.stop();
       _client.setTarget(SSIPClient.Target.SELF);
-    } catch (SSIPException e) {
+    }
+    catch (SSIPException e)
+    {
       fail("stop test.");
     }
   }
 
-  public void testSetParameters () {
-    try {
+  public void testSetParameters()
+  {
+    try
+    {
       _client.setVolume(0);
       _client.say(SSIPPriority.MESSAGE, "this is in a lower volume");
       _client.setVolume(100);
@@ -113,32 +134,43 @@ public class SSIPClientTest extends TestCase {
       _client.setRate(0);
       _client.setPitch(50);
       _client.say(SSIPPriority.MESSAGE, "this is like girls");
-    } catch (SSIPCommandException e) {
+    }
+    catch (SSIPCommandException e)
+    {
       fail("" + e.getResponse().getCode());
-    } catch (SSIPException e) {
+    }
+    catch (SSIPException e)
+    {
       fail();
     }
   }
 
-  public void testListings () {
-    try {
+  public void testListings()
+  {
+    try
+    {
       List<String> data;
       data = _client.getOutputModules();
-      for (String s : data) {
-    	  if(s == "dummy") continue; //Not for this one...:)
+      for (String s : data)
+      {
+        if (s == "dummy")
+          continue; // Not for this one...:)
         _client.setOutputModule(s);
         _client.sayFormated(SSIPPriority.MESSAGE, "speaking from module %s", s);
       }
       data = _client.getVoices();
-      for (String s : data) {
+      for (String s : data)
+      {
         _client.setVoice(s);
         _client.sayFormated(SSIPPriority.MESSAGE, "this voice %s", s);
       }
-      for (SSIPSynthesisVoice v : _client.getSynthesisVoices()) {
-        _client.sayFormated(SSIPPriority.MESSAGE, "Synth voice %s", v
-            .toString());
+      for (SSIPSynthesisVoice v : _client.getSynthesisVoices())
+      {
+        _client.sayFormated(SSIPPriority.MESSAGE, "Synth voice %s", v.toString());
       }
-    } catch (SSIPException e) {
+    }
+    catch (SSIPException e)
+    {
       fail();
     }
   }

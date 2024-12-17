@@ -34,15 +34,16 @@ import java.util.List;
  * @see SSIPConnection#sendCommand(SSIPCommand)
  * @see SSIPConnection#sendData(String)
  */
-public class SSIPResponse {
+public class SSIPResponse
+{
   /**
    * Return code
    */
-  private int _code;
+  private int          _code;
   /**
    * human readable message
    */
-  private String _msg;
+  private String       _msg;
   /**
    * response data
    */
@@ -51,15 +52,14 @@ public class SSIPResponse {
   /**
    * constructs a new SSIPResponse with code, message and data
    * 
-   * @param code
-   *          the return code
-   * @param msg
-   *          the human readable message
-   * @param data
-   *          the response data
+   * @param code the return code
+   * @param msg  the human readable message
+   * @param data the response data
    */
-  SSIPResponse (int code, String msg, List<String> data) {
-    this(code, msg);
+  SSIPResponse(int code, String msg, List<String> data)
+  {
+    this(code,
+         msg);
     _data = data;
   }
 
@@ -67,14 +67,13 @@ public class SSIPResponse {
    * Constructs a new SSIPResponse with code, message and no associated data. In
    * this case data is null
    * 
-   * @param code
-   *          the return code
-   * @param msg
-   *          the human readable message
+   * @param code the return code
+   * @param msg  the human readable message
    */
-  public SSIPResponse (int code, String msg) {
+  public SSIPResponse(int code, String msg)
+  {
     _code = code;
-    _msg = msg;
+    _msg  = msg;
   }
 
   /**
@@ -82,17 +81,19 @@ public class SSIPResponse {
    * 
    * @return the code
    */
-  public int getCode () {
+  public int getCode()
+  {
     return _code;
   }
 
   /**
-   * Gets the data associated with this SSIPResponse as an unmodifiable list.
-   * When no data is associated {@code null} is returned
+   * Gets the data associated with this SSIPResponse as an unmodifiable list. When
+   * no data is associated {@code null} is returned
    * 
    * @return the data or {@code null} if there is no data.
    */
-  public List<String> getData () {
+  public List<String> getData()
+  {
     return (_data != null) ? Collections.unmodifiableList(_data) : null;
   }
 
@@ -101,7 +102,8 @@ public class SSIPResponse {
    * 
    * @return the message
    */
-  public String getMsg () {
+  public String getMsg()
+  {
     return _msg;
   }
 }

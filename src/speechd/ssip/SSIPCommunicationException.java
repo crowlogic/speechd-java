@@ -21,30 +21,35 @@
 package speechd.ssip;
 
 /**
- * Signals a communication error, for example, if a connection cannot be established or there was some problem 
- * transmitting a message.
+ * Signals a communication error, for example, if a connection cannot be
+ * established or there was some problem transmitting a message.
  * 
  * @author ragb
  * 
  */
-public class SSIPCommunicationException extends SSIPException {
+public class SSIPCommunicationException extends
+                                        SSIPException
+{
   /**
    * 
    */
   private static final long serialVersionUID = 6408408425113231878L;
 
   /**
-   * Constructs a SSIPCommunicationException. 
+   * Constructs a SSIPCommunicationException.
    */
-  public SSIPCommunicationException () {
+  public SSIPCommunicationException()
+  {
     // TODO Auto-generated constructor stub
   }
 
   /**
    * Constructs a SSIPCommunicationException, given an apropriate message.
+   * 
    * @param message The message
    */
-  public SSIPCommunicationException (String message) {
+  public SSIPCommunicationException(String message)
+  {
     super(message);
     // TODO Auto-generated constructor stub
   }
@@ -52,7 +57,8 @@ public class SSIPCommunicationException extends SSIPException {
   /**
    * @param t
    */
-  public SSIPCommunicationException (Throwable t) {
+  public SSIPCommunicationException(Throwable t)
+  {
     super(t);
     // TODO Auto-generated constructor stub
   }
@@ -61,8 +67,10 @@ public class SSIPCommunicationException extends SSIPException {
    * @param message
    * @param t
    */
-  public SSIPCommunicationException (String message, Throwable t) {
-    super(message, t);
+  public SSIPCommunicationException(String message, Throwable t)
+  {
+    super(message,
+          t);
     // TODO Auto-generated constructor stub
   }
 }

@@ -21,10 +21,19 @@
 package speechd.ssip;
 
 /**
- * This enum models messages' priority, which can take one of the following values:
- * <ul><li>IMPORTANT</li> <li>MESSAGE</li> <li>TEXT</li> <li>NOTIFICATION</li> <li>PROgRESS</li></ul>
- * <p>Clients use this enum's various values to specify what priority to use with speech commands.
- * See section 4.3 of SSIP specification to get details of SSIP priority model.
+ * This enum models messages' priority, which can take one of the following
+ * values:
+ * <ul>
+ * <li>IMPORTANT</li>
+ * <li>MESSAGE</li>
+ * <li>TEXT</li>
+ * <li>NOTIFICATION</li>
+ * <li>PROgRESS</li>
+ * </ul>
+ * <p>
+ * Clients use this enum's various values to specify what priority to use with
+ * speech commands. See section 4.3 of SSIP specification to get details of SSIP
+ * priority model.
  * 
  * 
  * @author ragb
@@ -34,6 +43,11 @@ package speechd.ssip;
  * @see SSIPClient#sayKey(SSIPPriority, String)
  * @see SSIPClient#setPriority(SSIPPriority)
  */
-public enum SSIPPriority {
-  IMPORTANT, MESSAGE, TEXT, NOTIFICATION, PROgRESS;
+public enum SSIPPriority
+{
+ IMPORTANT,
+ MESSAGE,
+ TEXT,
+ NOTIFICATION,
+ PROgRESS;
 }

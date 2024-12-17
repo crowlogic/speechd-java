@@ -21,12 +21,16 @@
 package speechd.ssip;
 
 /**
- * Enum to hold possible values for anouncing capital letters. See section 4.5 of SSIP documentation for explanation.
+ * Enum to hold possible values for anouncing capital letters. See section 4.5
+ * of SSIP documentation for explanation.
  * 
  * @author ragb
  * 
  * @see SSIPClient#setCapitalLettersRecognitionMode(SSIPCapitalLetters)
  */
-public enum SSIPCapitalLetters {
-  NONE, SPELL, ICON;
+public enum SSIPCapitalLetters
+{
+ NONE,
+ SPELL,
+ ICON;
 }

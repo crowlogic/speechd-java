@@ -26,63 +26,79 @@ package speechd.ssip;
  * @author ragb
  * 
  */
-public class SSIPCommand {
+public class SSIPCommand
+{
   /**
    * The command itself
    */
-  private String _cmd;
+  private String   _cmd;
   /**
    * The command arguments
    */
   private String[] _args;
 
   /**
-   * Constructs a SSIPCommand, given the command and the various command arguments. 
-   * @param command The command itself. 
-   * @param args The command arguments  
+   * Constructs a SSIPCommand, given the command and the various command
+   * arguments.
+   * 
+   * @param command The command itself.
+   * @param args    The command arguments
    */
-  public SSIPCommand (String command, String... args) {
+  public SSIPCommand(String command, String... args)
+  {
     this(command);
     _args = args;
   }
 
   /**
    * Constructs a SSIPCommand without arguments.
+   * 
    * @param command The command itself.
    */
-  public SSIPCommand (String command) {
+  public SSIPCommand(String command)
+  {
     _cmd = command;
   }
 
   /**
    * The command of this SSIPCommand.
+   * 
    * @return The command itself.
    */
-  public String getCommand () {
+  public String getCommand()
+  {
     return _cmd;
   }
 
   /**
    * The command arguments of this SSIPCommand.
+   * 
    * @return The command arguments.
    */
-  public String[] getArgs () {
+  public String[] getArgs()
+  {
     return _args;
   }
 
   /**
    * The representation of this SSIPCommand.
-   * @return The representation of this SSIPCommand. 
+   * 
+   * @return The representation of this SSIPCommand.
    */
-  public String toString () {
+  public String toString()
+  {
     StringBuilder sb = new StringBuilder();
     sb.append(getCommand());
-    if (getArgs() != null) {
-      for (int i = 0; i < getArgs().length; ++i) {
+    if (getArgs() != null)
+    {
+      for (int i = 0; i < getArgs().length; ++i)
+      {
         sb.append(' ');
         sb.append(getArgs()[i]);
       }
-    } else {
+    }
+    else
+    {
       sb.append(' ');
     }
     return sb.toString();

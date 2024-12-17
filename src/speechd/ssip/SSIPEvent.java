@@ -21,34 +21,46 @@
 package speechd.ssip;
 
 /**
- * Instances of this class represent SSIP events like defined on section 4.7 of SSIP specifications.
- * SSIP events have a type (see {@link SSIPEvent.EventType}), an associated message id (message to wich belongs the event), client id (id of the associated connection) and an optional index mark string, valid only for <code>INDEXMARK</code> event type.
+ * Instances of this class represent SSIP events like defined on section 4.7 of
+ * SSIP specifications. SSIP events have a type (see
+ * {@link SSIPEvent.EventType}), an associated message id (message to wich
+ * belongs the event), client id (id of the associated connection) and an
+ * optional index mark string, valid only for <code>INDEXMARK</code> event type.
  * SSIPEvents are usually constructed by an instance of <@link SSIPEventParser}.
- * {@link SSIPEventHandler} receive instances of SSIPEvent when notified of speech events.
+ * {@link SSIPEventHandler} receive instances of SSIPEvent when notified of
+ * speech events.
  * 
  * @author ragb
  * 
  * @see SSIPEventHandler
  * @see SSIPEventParser
  */
-public class SSIPEvent {
-  public enum EventType {
-    INDEX_MARK, BEGIN, END, CANCEL, PAUSE, RESUME
+public class SSIPEvent
+{
+  public enum EventType
+  {
+   INDEX_MARK,
+   BEGIN,
+   END,
+   CANCEL,
+   PAUSE,
+   RESUME
   }
 
   private EventType _type;
-  private int _msgId;
-  private int _clientId;
-  private String _indexMark = null;
+  private int       _msgId;
+  private int       _clientId;
+  private String    _indexMark = null;
 
   /**
    * @param type
    * @param msgId
    * @param clientId
    */
-  public SSIPEvent (EventType type, int msgId, int clientId) {
-    _type = type;
-    _msgId = msgId;
+  public SSIPEvent(EventType type, int msgId, int clientId)
+  {
+    _type     = type;
+    _msgId    = msgId;
     _clientId = clientId;
   }
 
@@ -57,37 +69,44 @@ public class SSIPEvent {
    * @param msgId
    * @param clientId
    * @param indexMark
-   */	
-  public SSIPEvent (EventType type, int msgId, int clientId, String indexMark) {
-    this(type, msgId, clientId);
+   */
+  public SSIPEvent(EventType type, int msgId, int clientId, String indexMark)
+  {
+    this(type,
+         msgId,
+         clientId);
     _indexMark = indexMark;
   }
 
   /**
    * @return the clientId
    */
-  public int getClientId () {
+  public int getClientId()
+  {
     return _clientId;
   }
 
   /**
    * @return the indexMark
    */
-  public String getIndexMark () {
+  public String getIndexMark()
+  {
     return _indexMark;
   }
 
   /**
    * @return the msgId
    */
-  public int getMsgId () {
+  public int getMsgId()
+  {
     return _msgId;
   }
 
   /**
    * @return the type
    */
-  public EventType getType () {
+  public EventType getType()
+  {
     return _type;
   }
 }

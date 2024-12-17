@@ -34,16 +34,22 @@ import junit.framework.TestCase;
  * @author ragb
  * 
  */
-public class SSIPEventsTest extends TestCase implements SSIPEventHandler {
-  private SSIPClient _client;
+public class SSIPEventsTest extends
+                            TestCase implements
+                            SSIPEventHandler
+{
+  private SSIPClient               _client;
   private BlockingQueue<SSIPEvent> _queue;
 
   /**
    * @see junit.framework.TestCase#setUp()
    */
-  protected void setUp () throws Exception {
+  protected void setUp() throws Exception
+  {
     super.setUp();
-    _client = new SSIPClient("test", "test", "test");
+    _client = new SSIPClient("test",
+                             "test",
+                             "test");
     _client.setEventHandler(this);
     _queue = new java.util.concurrent.ArrayBlockingQueue<SSIPEvent>(1);
   }
@@ -51,21 +57,28 @@ public class SSIPEventsTest extends TestCase implements SSIPEventHandler {
   /**
    * @see junit.framework.TestCase#tearDown()
    */
-  protected void tearDown () throws Exception {
+  protected void tearDown() throws Exception
+  {
     super.tearDown();
     _client.close();
   }
 
-  public void testBegin () {
-    try {
+  public void testBegin()
+  {
+    try
+    {
       _client.setNotification(true, SSIPEvent.EventType.BEGIN);
       _client.say(SSIPPriority.MESSAGE, "test begin");
       SSIPEvent e = _queue.take();
       assertEquals(e.getType(), SSIPEvent.EventType.BEGIN);
       _client.setNotification(false, SSIPEvent.EventType.BEGIN);
-    } catch (SSIPException e) {
+    }
+    catch (SSIPException e)
+    {
       fail();
-    } catch (InterruptedException e) {
+    }
+    catch (InterruptedException e)
+    {
       fail();
     }
   }
@@ -73,7 +86,8 @@ public class SSIPEventsTest extends TestCase implements SSIPEventHandler {
   /**
    * @see speechd.ssip.SSIPEventHandler#handleSSIPEvent(speechd.ssip.SSIPEvent)
    */
-  public void handleSSIPEvent (SSIPEvent event) {
+  public void handleSSIPEvent(SSIPEvent event)
+  {
     _queue.add(event);
   }
 }

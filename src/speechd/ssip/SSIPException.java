@@ -26,30 +26,36 @@ package speechd.ssip;
  * @author ragb
  * 
  */
-public class SSIPException extends Exception {
+public class SSIPException extends
+                           Exception
+{
   /**
    * 
    */
   private static final long serialVersionUID = -7491952921596029302L;
 
   /**
-   * Constructs a SSIPException  
+   * Constructs a SSIPException
    */
-  protected SSIPException () {
+  protected SSIPException()
+  {
   }
 
   /**
    * Constructs a SSIPException, given an apropriate message.
+   * 
    * @param message The message
    */
-  protected SSIPException (String message) {
+  protected SSIPException(String message)
+  {
     super(message);
   }
 
   /**
    * @param t
    */
-  protected SSIPException (Throwable t) {
+  protected SSIPException(Throwable t)
+  {
     super(t);
   }
 
@@ -57,7 +63,9 @@ public class SSIPException extends Exception {
    * @param message
    * @param t
    */
-  protected SSIPException (String message, Throwable t) {
-    super(message, t);
+  protected SSIPException(String message, Throwable t)
+  {
+    super(message,
+          t);
   }
 }

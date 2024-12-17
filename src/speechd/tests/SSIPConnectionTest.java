@@ -33,19 +33,26 @@ import junit.framework.TestCase;
  * @author ragb
  * 
  */
-public class SSIPConnectionTest extends TestCase {
+public class SSIPConnectionTest extends
+                                TestCase
+{
   private SSIPConnection _connection;
 
   /**
    * Test method for {@link speechd.ssip.SSIPConnection#connect()}.
    */
-  public void testConnect () {
-    try {
-      _connection = new SSIPConnection("localhost", 6560); // 6560 meaning
-                                                            // default port.
+  public void testConnect()
+  {
+    try
+    {
+      _connection = new SSIPConnection("localhost",
+                                       6560); // 6560 meaning
+                                              // default port.
       _connection.connect();
       assertTrue(_connection.isConnected());
-    } catch (SSIPException e) {
+    }
+    catch (SSIPException e)
+    {
       fail(e.getMessage());
     }
   }
@@ -53,14 +60,19 @@ public class SSIPConnectionTest extends TestCase {
   /**
    * Test method for {@link speechd.ssip.SSIPConnection#disconnect()}.
    */
-  public void testDisconnect () {
-    try {
-      _connection = new SSIPConnection("localhost", 6560); // 6560 meaning
-                                                            // default port.
+  public void testDisconnect()
+  {
+    try
+    {
+      _connection = new SSIPConnection("localhost",
+                                       6560); // 6560 meaning
+                                              // default port.
       _connection.connect();
       _connection.disconnect();
       assertFalse(_connection.isConnected());
-    } catch (SSIPException e) {
+    }
+    catch (SSIPException e)
+    {
       fail(e.getMessage());
     }
   }
@@ -69,24 +81,35 @@ public class SSIPConnectionTest extends TestCase {
    * Test method for
    * {@link speechd.ssip.SSIPConnection#sendCommand(speechd.ssip.SSIPCommand)}.
    */
-  public void testSendCommand () {
-    try {
-      _connection = new SSIPConnection("localhost", 6560); // 6560 meaning
-                                                            // default port.
+  public void testSendCommand()
+  {
+    try
+    {
+      _connection = new SSIPConnection("localhost",
+                                       6560); // 6560 meaning
+                                              // default port.
       _connection.connect();
-      SSIPResponse res = _connection.sendCommand(new SSIPCommand("set", "self",
-          "client_name", "test:test:test"));
+      SSIPResponse res = _connection.sendCommand(new SSIPCommand("set",
+                                                                 "self",
+                                                                 "client_name",
+                                                                 "test:test:test"));
       assertEquals(res.getCode() / 100, 2);
       // try an invalid command:
-      try {
-        _connection.sendCommand(new SSIPCommand("error", "stuff"));
+      try
+      {
+        _connection.sendCommand(new SSIPCommand("error",
+                                                "stuff"));
         fail("it should have thrown an exception");
-      } catch (SSIPCommandException e) {
+      }
+      catch (SSIPCommandException e)
+      {
         // fine here...
       }
       _connection.sendCommand(new SSIPCommand("quit"));
       _connection.disconnect();
-    } catch (SSIPException e) {
+    }
+    catch (SSIPException e)
+    {
       fail(e.getMessage());
     }
   }
@@ -95,18 +118,25 @@ public class SSIPConnectionTest extends TestCase {
    * Test method for
    * {@link speechd.ssip.SSIPConnection#sendData(java.lang.String)}.
    */
-  public void testSendData () {
-    try {
-      _connection = new SSIPConnection("localhost", 6560); // 6560 meaning
-                                                            // default port.
+  public void testSendData()
+  {
+    try
+    {
+      _connection = new SSIPConnection("localhost",
+                                       6560); // 6560 meaning
+                                              // default port.
       _connection.connect();
-      _connection.sendCommand(new SSIPCommand("set", "self", "CLIENT_NAME",
-          "test:test:test"));
+      _connection.sendCommand(new SSIPCommand("set",
+                                              "self",
+                                              "CLIENT_NAME",
+                                              "test:test:test"));
       _connection.sendCommand(new SSIPCommand("speak"));
       _connection.sendData("this is a test");
       _connection.sendCommand(new SSIPCommand("quit"));
       _connection.disconnect();
-    } catch (SSIPException e) {
+    }
+    catch (SSIPException e)
+    {
       fail(e.getMessage());
     }
   }

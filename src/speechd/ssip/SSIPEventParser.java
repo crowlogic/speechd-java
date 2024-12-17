@@ -23,25 +23,30 @@ package speechd.ssip;
 import java.util.Map;
 
 /**
- * This utility class is a kind of factory for events, it creates {@link SSIPEvent} instances from {@link SSIPResponse}. This is a singletone, see {@link SSIPEventParser#getInstance()} to get the single instance.
+ * This utility class is a kind of factory for events, it creates
+ * {@link SSIPEvent} instances from {@link SSIPResponse}. This is a singletone,
+ * see {@link SSIPEventParser#getInstance()} to get the single instance.
  * 
  * @author ragb
  * 
  * @see SSIPEvent
  */
-public final class SSIPEventParser {
-  
-	/**
-	 * The single instance
-	 */
-	private static SSIPEventParser _instance = null;
-	
+public final class SSIPEventParser
+{
+
   /**
- * Map with event codes to event types:
- */
-private static Map<Integer, SSIPEvent.EventType> _eventCodes = new java.util.HashMap<Integer, SSIPEvent.EventType>();
+   * The single instance
+   */
+  private static SSIPEventParser                   _instance   = null;
+
+  /**
+   * Map with event codes to event types:
+   */
+  private static Map<Integer, SSIPEvent.EventType> _eventCodes = new java.util.HashMap<Integer,
+                SSIPEvent.EventType>();
   // map event codes to event types:
-  static {
+  static
+  {
     _eventCodes.put(700, SSIPEvent.EventType.INDEX_MARK);
     _eventCodes.put(701, SSIPEvent.EventType.BEGIN);
     _eventCodes.put(702, SSIPEvent.EventType.END);
@@ -51,16 +56,19 @@ private static Map<Integer, SSIPEvent.EventType> _eventCodes = new java.util.Has
   }
 
   /**
- * constructs a new SSIPEventParser
- */
-private SSIPEventParser () {
+   * constructs a new SSIPEventParser
+   */
+  private SSIPEventParser()
+  {
   }
 
   /**
    * gets the single instance of SSIPEventParser
- * @return the single instance
- */
-static SSIPEventParser getInstance () {
+   * 
+   * @return the single instance
+   */
+  static SSIPEventParser getInstance()
+  {
     if (_instance == null)
       _instance = new SSIPEventParser();
     return _instance;
@@ -68,20 +76,27 @@ static SSIPEventParser getInstance () {
 
   /**
    * Parses a {@code SSIPEvent} from a <@code SSIPResponse}
- * @param response the response
- * @return the <@code SSIPEvent} parsed from the {@code response}
- */
-SSIPEvent parse (SSIPResponse response) {
+   * 
+   * @param response the response
+   * @return the <@code SSIPEvent} parsed from the {@code response}
+   */
+  SSIPEvent parse(SSIPResponse response)
+  {
     assert (response.getData().size() == 2 || response.getData().size() == 3);
     SSIPEvent.EventType type = _eventCodes.get(response.getCode());
     assert (type != null);
-    int msgId = Integer.parseInt(response.getData().get(0));
+    int msgId    = Integer.parseInt(response.getData().get(0));
     int clientId = Integer.parseInt(response.getData().get(1));
     // when we have an index mark event we must construct it with one more
     // parameter
     if (type == SSIPEvent.EventType.INDEX_MARK)
-      return new SSIPEvent(type, msgId, clientId, response.getData().get(2));
+      return new SSIPEvent(type,
+                           msgId,
+                           clientId,
+                           response.getData().get(2));
     // no index mark:
-    return new SSIPEvent(type, msgId, clientId);
+    return new SSIPEvent(type,
+                         msgId,
+                         clientId);
   }
 }

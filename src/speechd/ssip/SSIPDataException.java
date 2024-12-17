@@ -21,12 +21,15 @@
 package speechd.ssip;
 
 /**
- * Thrown if server responds with some kind of error when client sends data (a String to be spoken).
+ * Thrown if server responds with some kind of error when client sends data (a
+ * String to be spoken).
  * 
  * @author ragb
  * 
  */
-public class SSIPDataException extends SSIPException {
+public class SSIPDataException extends
+                               SSIPException
+{
   /**
    * 
    */
@@ -34,35 +37,42 @@ public class SSIPDataException extends SSIPException {
   /**
    * The data which is meant to be sent.
    */
-  private String _data;
+  private String            _data;
   /**
    * The response from server.
    */
-  private SSIPResponse _response;
+  private SSIPResponse      _response;
 
   /**
-   * Constructs a SSIPDataException, given the data which is meant to be sent and the response from server.  
-   * @param data The data
+   * Constructs a SSIPDataException, given the data which is meant to be sent and
+   * the response from server.
+   * 
+   * @param data     The data
    * @param response The response
    */
-  public SSIPDataException (String data, SSIPResponse response) {
-    _data = data;
+  public SSIPDataException(String data, SSIPResponse response)
+  {
+    _data     = data;
     _response = response;
   }
 
   /**
    * Gets the data.
+   * 
    * @return the data
    */
-  public String getData () {
+  public String getData()
+  {
     return _data;
   }
 
   /**
    * Gets the response from server.
+   * 
    * @return the response
    */
-  public SSIPResponse getResponse () {
+  public SSIPResponse getResponse()
+  {
     return _response;
   }
 }

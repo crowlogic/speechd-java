@@ -27,49 +27,59 @@ package speechd.ssip;
  * 
  */
 /**
- * This exception is thrown when there was a response error from server corresponding 
- * to a SSIP command sent (the code of server's response was not in 200-299 range).
+ * This exception is thrown when there was a response error from server
+ * corresponding to a SSIP command sent (the code of server's response was not
+ * in 200-299 range).
  * 
  * @author ragb
  * 
  */
-public class SSIPCommandException extends SSIPException {
+public class SSIPCommandException extends
+                                  SSIPException
+{
   /**
    * 
    */
   private static final long serialVersionUID = 3391141636275637224L;
   /**
-   * The SSIPCommand.  
+   * The SSIPCommand.
    */
-  private SSIPCommand _command;
+  private SSIPCommand       _command;
   /**
    * The response from server that corresponds to this SSIPCommand.
    */
-  private SSIPResponse _response;
+  private SSIPResponse      _response;
 
   /**
-   * Constructs a SSIPCommandException, given the SSIPCommand sent and the response from server. 
-   * @param command The SSIPCommand
+   * Constructs a SSIPCommandException, given the SSIPCommand sent and the
+   * response from server.
+   * 
+   * @param command  The SSIPCommand
    * @param response The response received.
    */
-  public SSIPCommandException (SSIPCommand command, SSIPResponse response) {
-    _command = command;
+  public SSIPCommandException(SSIPCommand command, SSIPResponse response)
+  {
+    _command  = command;
     _response = response;
   }
 
   /**
    * Gets the SSIPCommand associated with this SSIPCommandException.
+   * 
    * @return the command
    */
-  public SSIPCommand getCommand () {
+  public SSIPCommand getCommand()
+  {
     return _command;
   }
 
   /**
    * gets the response associated with this SSIPCommandException.
+   * 
    * @return the response
    */
-  public SSIPResponse getResponse () {
+  public SSIPResponse getResponse()
+  {
     return _response;
   }
 }
